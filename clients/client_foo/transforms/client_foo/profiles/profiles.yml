@@ -1,0 +1,12 @@
+client_foo:
+  outputs:
+    arch:
+      dbname: "{{ env_var('POSTGRES_DBNAME') }}"
+      host: "{{ env_var('POSTGRES_HOST') }}"
+      pass: "{{ env_var('POSTGRES_PASS') }}"
+      port: "{{ env_var('POSTGRES_PORT') | int }}"
+      schema: "{{ env_var('POSTGRES_SCHEMA') }}"
+      threads: 1
+      type: postgres
+      user: "{{ env_var('POSTGRES_USER') }}"
+  target: arch

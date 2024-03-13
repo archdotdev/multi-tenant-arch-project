@@ -1,0 +1,3 @@
+packages:
+  - local: ../../../../components/transforms/component_abc/
+  - local: ../../../../components/transforms/component_def/
