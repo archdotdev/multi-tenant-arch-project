@@ -19,3 +19,12 @@ models:
         tests:
           - unique
           - not_null
+
+  - name: override_model
+    description: "A starter dbt model"
+    columns:
+      - name: message
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
