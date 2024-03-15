@@ -3,3 +3,4 @@
 .venv
 .python-version
 .user.yml
+.vscode/*
