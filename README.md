@@ -31,13 +31,12 @@ pip install dbt-postgres==1.7.10
 
 ### Running
 
-- If your Arch database instance doesn't have a dbt environment (i.e. `dbt` database, `data` schema, `data_prod` user) set up then run the permission_script.sql
-- Populate a .env file using the .env.template
-- Run `source .env`
+- Retrieve your Arch development dbt environment credentials (reach out via Slack if you need this)
+- Populate a `.env` file at the top level directory using the `.env.template` in this repo
+- Run `source .env` to add those variables to your session
 - Navigate to one of the dbt projects and run it
-  - `cd clients//client_foo`
+  - `cd components/component_abc`
   - `dbt run`
-  - The result is both client specific models along with the dependecy package models
 
 ### Creating a New Client or Component
 
