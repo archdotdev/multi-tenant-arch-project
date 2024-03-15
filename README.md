@@ -1,16 +1,26 @@
-# sample-product
+# Multi Tenant Arch Project
 
+This project serves as an example of how you could set up your Arch project repository to support multi tenant use cases.
+This is only a reference implementation.
+You can choose to set up your project which ever way you prefer.
 
 ## Project Structure
 
-The project is set up with a `components/` directory that contains all the shared reusable components.
-Each client has their own subdirectory in the `clients/` directory that stitches together the shared dbt packages using `package.yml` with local relative references along with additional client specific models.
-In the same way that clients stitch together component packages, we can also build additional shared components that bring multiple other components together into a larger component.
+This project is set up with a `components/` directory that contains all the shared reusable components.
+These transformation components are represented as dbt [packages](https://docs.getdbt.com/docs/build/packages).
+In addition to the components directory, each client has their own subdirectory in the `clients/` directory.
+Each client implementation choses which shared dbt packages to import in it's `package.yml` using local relative references.
+The client subirectories provide a way to add additional client specific models in addition to the shared components.
 
-## Install dbt
+In the same way that clients stitch together component dbt packages, we can also create new components that build on each other by importing in the same way that clients do.
+
+## Getting Started
+
+### Install dbt
 
 Install dbt into a virtual environment.
 Feel free to bump the version to the latest.
+See the `dbt References` section below for links to the install docs.
 
 ```bash
 pyenv local 3.11
@@ -19,17 +29,23 @@ python -m venv .venv
 pip install dbt-postgres==1.7.10
 ```
 
-## Running
+### Running
 
 - If your Arch database instance doesn't have a dbt environment (i.e. `dbt` database, `data` schema, `data_prod` user) set up then run the permission_script.sql
 - Populate a .env file using the .env.template
 - Run `source .env`
 - Navigate to one of the dbt projects and run it
-  - `cd clients/client_foo/transforms/client_foo`
+  - `cd clients//client_foo`
   - `dbt run`
   - The result is both client specific models along with the dependecy package models
 
-## Patterns
+### Creating a New Client or Component
+
+1. `cd <directory>`
+1. `dbt init --skip-profile-setup`
+1. Alter the `dbt_project.yml` profile configuration to reference `arch`, the shared profile in the `profiles` directory in this repo.
+
+## Advanced Patterns
 
 This project implements examples of a few patterns that could be helpful when developing a dbt project in a multi tenant way.
 
@@ -59,14 +75,8 @@ In this case it looks for a `inherit_model__child` model and appends it's conten
 For example in `client_foo` the `inherit_model__child` model is defined which effectively allows the project to inherit the parent logic and append new custom logic.
 The result is a table with both the base and client specific records in it.
 
-
-## Creating a New Client or Component
-
-1. `cd <directory>`
-1. `dbt init --skip-profile-setup`
-1. Make a copy of profile.yml in a new `profiles` directory in the new project
-
 ## dbt References
-https://docs.getdbt.com/docs/core/pip-install
-https://docs.getdbt.com/docs/core/connect-data-platform/postgres-setup
-https://docs.getdbt.com/reference/resource-configs/postgres-configs
+
+- https://docs.getdbt.com/docs/core/pip-install
+- https://docs.getdbt.com/docs/core/connect-data-platform/postgres-setup
+- https://docs.getdbt.com/reference/resource-configs/postgres-configs
