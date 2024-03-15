@@ -9,10 +9,15 @@ In the same way that clients stitch together component packages, we can also bui
 
 ## Install dbt
 
+Install dbt into a virtual environment.
+Feel free to bump the version to the latest.
+
+```bash
 pyenv local 3.11
 python -m venv .venv
 . .venv/bin/activate
-pip install dbt-postgres protobuf==4.25.3
+pip install dbt-postgres==1.7.10
+```
 
 ## Running
 
