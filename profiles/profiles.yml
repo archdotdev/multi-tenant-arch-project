@@ -1,4 +1,4 @@
-component_abc:
+arch:
   outputs:
     arch:
       dbname: "{{ env_var('POSTGRES_DBNAME') }}"

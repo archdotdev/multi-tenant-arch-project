@@ -1,4 +1,4 @@
 packages:
-- local: ../../../../components/transforms/component_abc/
-- local: ../../../../components/transforms/component_def/
-sha1_hash: 74c6dbec49a316e7e99788ec1711848bdd8db3f1
+- local: ../../components/component_abc/
+- local: ../../components/component_def/
+sha1_hash: 1c15415b58db6a81012e4a079a2f89e93ffaf1c3
