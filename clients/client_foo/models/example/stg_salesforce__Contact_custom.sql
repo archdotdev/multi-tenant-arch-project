@@ -1,3 +1,8 @@
+{{
+    config(
+        enabled=False
+    )
+}}
 with source as (
     -- Simulate fake Salesforce source data
     select

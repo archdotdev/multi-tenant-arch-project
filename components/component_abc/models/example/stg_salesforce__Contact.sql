@@ -1,3 +1,8 @@
+{{
+    config(
+        enabled=False
+    )
+}}
 -- depends_on: {{ ref('stg_salesforce__Contact_custom') }}
 with source as (
     -- Simulate fake Salesforce source data
