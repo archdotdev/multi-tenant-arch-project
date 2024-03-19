@@ -101,7 +101,7 @@ The result is a table with both the base and client specific rows in it.
 #### Columns
 
 A variation of this approach is shown with a Salesforce Contacts example which commonly has custom fields that vary between clients.
-In `stg_salesforce__Contact.sql` we include the default fields, then we also optionally include any custom fields that are defined in `stg_salesforce__Contact_custom.sql`.
+In `stg_salesforce__Contact.sql` we include the default fields, then we also optionally (existence check is handled by the custom `macros/models_exists.sql` logic) include any custom fields that are defined in `stg_salesforce__Contact_custom.sql`.
 The result is a table that contains the default and custom columns together as a single table.
 
 ## dbt References
