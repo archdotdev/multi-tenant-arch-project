@@ -44,6 +44,25 @@ pip install dbt-postgres==1.7.10
 1. `dbt init --skip-profile-setup`
 1. Alter the `dbt_project.yml` profile configuration to reference `arch`, the shared profile in the `profiles` directory in this repo.
 
+## Code Gen
+
+Using the [codegen](https://hub.getdbt.com/dbt-labs/codegen/latest/) dbt package we're able to accelerate the process of scaffolding a project.
+On top of that codegen package, this repo also includes a python script called `code_gen.py` that helps stitch all the commands together in an opinionated way.
+Given the following information the scripts will create your `sources.yml` file based on what is in the database and will create basic staging models for each table.
+After running the scripts you can then make your manual modifications needed.
+
+```bash
+# Using Salesforce as an example
+cd components/salesforce_staging
+touch packages.yml
+# Add the codegen package, see https://hub.getdbt.com/dbt-labs/codegen/latest/
+dbt deps
+cd ..
+python code_gen.py --source_name=salesforce --schema_name=salesforce_raw_tenant-1 --database_name=app --write_path=salesforce_staging/models/staging
+```
+
+Pending and issue with writing sources that need to be case sensitive https://github.com/dbt-labs/dbt-codegen/issues/140
+
 ## Advanced Patterns
 
 This project implements examples of a few patterns that could be helpful when developing a dbt project in a multi tenant way.
