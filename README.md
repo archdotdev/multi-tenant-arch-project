@@ -88,10 +88,21 @@ See https://github.com/dbt-labs/dbt-core/issues/9762.
 ### Inheriting and Extending Component Models
 
 Another common pattern in software engineering is inheriting from a base class to extend the existing logic, we can acheive something similar in dbt using the pattern shown in this project.
+These patterns can be beneficial to define default logic once to keep it consistent across clients.
+If you need to add new new default column or set of rows, you apply them to the base models and all client implementations inherit them.
+
+#### Rows
+
 In `component_abc` theres a model called `inherit_model.sql` that implements base logic but also accepts an optional child model, using jinja conditional logic, if it's available.
-In this case it looks for a `inherit_model__child` model and appends it's contents if it's implemented.
+In this case it looks for a `inherit_model__child` model and appends it's rows to the model, if it's implemented.
 For example in `client_foo` the `inherit_model__child` model is defined which effectively allows the project to inherit the parent logic and append new custom logic.
-The result is a table with both the base and client specific records in it.
+The result is a table with both the base and client specific rows in it.
+
+#### Columns
+
+A variation of this approach is shown with a Salesforce Contacts example which commonly has custom fields that vary between clients.
+In `stg_salesforce__Contact.sql` we include the default fields, then we also optionally include any custom fields that are defined in `stg_salesforce__Contact_custom.sql`.
+The result is a table that contains the default and custom columns together as a single table.
 
 ## dbt References
 
