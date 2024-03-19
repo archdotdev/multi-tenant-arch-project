@@ -65,6 +65,8 @@ Pending and issue with writing sources that need to be case sensitive https://gi
 
 ## Advanced Patterns
 
+:warning: WARNING: these patterns are experimental and in development.
+
 This project implements examples of a few patterns that could be helpful when developing a dbt project in a multi tenant way.
 
 It's common to have a component dbt package that implements a generic set of models for transforming a certain dataset.
