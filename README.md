@@ -58,6 +58,7 @@ After running the scripts you can then make your manual modifications needed.
 ```bash
 # Using Salesforce as an example
 cd components/salesforce_staging
+mkdir models/staging
 touch packages.yml
 # Add the codegen package, see https://hub.getdbt.com/dbt-labs/codegen/latest/
 dbt deps
