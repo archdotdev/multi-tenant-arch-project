@@ -4,6 +4,8 @@ This project serves as an example of how you could set up your Arch project repo
 This is only a reference implementation.
 You can choose to set up your project which ever way you prefer.
 
+Checkout the [Zoom clip walkthrough](https://us06web.zoom.us/clips/share/5f2fHeBb5uDWpK22DHKaJjmpJOLttw2eibiiPnNy7AbbTzlNiYPfNfLOFKF01gjLA3T7y15HpM8HuOWqTrlCyQuc.dY5Ob1HEJRgjIY0Q) of this project.
+
 ## Project Structure
 
 This project is set up with a `components/` directory that contains all the shared reusable components.
