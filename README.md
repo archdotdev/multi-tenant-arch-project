@@ -35,6 +35,7 @@ pip install dbt-postgres==1.7.10
 - Populate a `.env` file at the top level directory using the `.env.template` in this repo
 - Run `source .env` to add those variables to your session
 - Navigate to one of the dbt projects and run the debug command:
+
 ```bash
 source .env
 cd components/component_abc/
